@@ -1,0 +1,163 @@
+Create Table 
+===========
+create table student(roll_no integer primary key, 
+student_name varchar(50),dob date  ,address tinytext,phone_no varchar(20),
+blood_grp varchar(3));
+
+create table course (course_id integer primary key,course_name varchar(50),
+course_duration integer);
+
+create table course (course_id integer primary key,course_name varchar(50) not null,
+course_duration integer not null );
+
+How describe thhe stucture of table
+==================================
+desc student
+
+To Delete table
+================
+drop table student;
+List all tables in database
+=============================
+show tables
+
+remove Column from table
+========================
+ALTER TABLE student  DROP COLUMN blood_grp
+Add a New Column
+=================
+ALTER TABLE student ADD COLUMN adar_no number AFTER phone_no
+alter table  student add column blood_grp varchar(3) after phone_no 
+ALTER TABLE student CHANGE phone_no phone_no int
+How to delete database
+=====================
+SHOW DATABASES
+DROP DATABASE testdb
+How to create database
+======================
+CREATE DATABASE [IF NOT EXISTS] company
+
+
+alter table employee add column designation varchar(40) after emp_name
+
+Experiment 3
+=============
+create table persons( person_id int primary key,
+person_name varchar(50) not null,Adar_no int  not null unique  ,Age int check(age >18))
+
+create table orders(order_id int primary key, order_number int  not null,
+person_id int, foreign key(person_id) references persons(person_id))
+
+ALTER TABLE students
+ADD FOREIGN KEY (course_id) REFERENCES course(course_id); 
+
+ALTER TABLE Persons
+ADD PRIMARY KEY (ID)
+
+ALTER TABLE Persons
+DROP PRIMARY KEY
+
+Delete
+----------
+
+Delete from students where roll_no=3;
+alter table employee add  foreign key(dep_no) references  department(dep_no);
+
+Experiment No 3
+==============
+use organization
+
+
+insert into department values('001','Finance' );
+
+insert into employee values(2,'Bhagya','Manager','2000-07-14','kollakadavu',9061858939,'002',50000);
+
+insert into department values('D01','Sales' );
+
+mysql> select *from employee;
++--------+----------+-------------+------------+-------------+------------+--------+--------+
+| emp_no | emp_name | designation | dob        | address     | mobile_no  | dep_no | salary |
++--------+----------+-------------+------------+-------------+------------+--------+--------+
+|      1 | Aleesha  | Manager     | 1999-07-14 | kollakadavu | 9061858939 | 001    |  50000 |
+|      2 | Bhagya   | Manager     | 2000-07-14 | kollakadavu | 9061858939 | 002    |  50000 |
+|      3 | Arun     | IT          | 2002-02-19 | kollam      |  908765438 | 003    |   5780 |
+|      4 | Aun      | IT          | 2002-02-19 | kollam      |  908765438 | 004    |   5780 |
+|     10 | Hanna    | clerk       | 2000-12-18 | kollam      | 9000009023 | D02    |  78900 |
++--------+----------+-------------+------------+-------------+------------+--------+--------+
+5 rows in set (0.00 sec)
+
+select * from department;
++--------+----------------+
+| dob_no | dep_name       |
++--------+----------------+
+| 001    | Finance        |
+| 002    | Administration |
+| 003    | Purchasing     |
+| 004    | Production     |
+| 005    | Production     |
+| D02    | sales          |
++--------+----------------+
+6 rows in set (0.00 sec)
+
+
+
+mysql> select emp_no, emp_name from employee  where dep_no= 'D02';
++--------+----------+
+| emp_no | emp_name |
++--------+----------+
+|     10 | Hanna    |
++--------+----------+
+1 row in set (0.00 sec)
+
+
+mysql>  select emp_no,emp_name ,designation, dep_no, salary from  employee  order by salary desc;
++--------+----------+-------------+--------+--------+
+| emp_no | emp_name | designation | dep_no | salary |
++--------+----------+-------------+--------+--------+
+|     10 | Hanna    | clerk       | D02    |  78900 |
+|      1 | Aleesha  | Manager     | 001    |  50000 |
+|      2 | Bhagya   | Manager     | 002    |  50000 |
+|      3 | Arun     | IT          | 003    |   5780 |
+|      4 | Aun      | IT          | 004    |   5780 |
++--------+----------+-------------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql>  select emp_no,emp_name ,designation, dep_no, salary from  employee  order by salary asc;
++--------+----------+-------------+--------+--------+
+| emp_no | emp_name | designation | dep_no | salary |
++--------+----------+-------------+--------+--------+
+|      3 | Arun     | IT          | 003    |   5780 |
+|      4 | Aun      | IT          | 004    |   5780 |
+|      1 | Aleesha  | Manager     | 001    |  50000 |
+|      2 | Bhagya   | Manager     | 002    |  50000 |
+|     10 | Hanna    | clerk       | D02    |  78900 |
++--------+----------+-------------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select emp_no, emp_name from employee where salary between 5000 and 10000;
++--------+----------+
+| emp_no | emp_name |
++--------+----------+
+|      3 | Arun     |
+|      4 | Aun      |
++--------+----------+
+2 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
